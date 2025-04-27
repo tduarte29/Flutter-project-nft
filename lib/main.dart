@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_project/pages/welcome_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,17 +22,41 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [
-    Center(child: Text('Home')),
-    Center(child: Text('Business')),
-    Center(child: Text('School')),
-    Center(child: Text('Profile')),
-  ];
+  // final List<Widget> _pages = const [
+  //   Center(child: Text('Home')),
+  //   Center(child: Text('Business')),
+  //   Center(child: Text('School')),
+  //   Center(child: Text('Profile')),
+  // ];
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      Center(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => WelcomePage()),
+            );
+          },
+          child: Text(
+            'Home',
+            // style: TextStyle(
+            //   fontSize: 24,
+            //   color: Colors.white,
+            //   decoration: TextDecoration.underline,
+            // ),
+          ),
+        ),
+      ),
+      Center(child: Text('Business')),
+      Center(child: Text('School')),
+      Center(child: Text('Profile')),
+    ];
+
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: pages[_selectedIndex],
       backgroundColor: Color.fromARGB(255, 37, 51, 65),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
