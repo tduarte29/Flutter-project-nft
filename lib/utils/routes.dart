@@ -4,6 +4,7 @@ import '../screens/search_screen.dart';
 import '../screens/setup_profile_screen.dart';
 import '../screens/art_category_screen.dart';
 import '../screens/nft_detail_screen.dart';
+import '../screens/profile_screen.dart';
 import '../models/model.dart';
 
 class AppRoutes {
@@ -12,6 +13,7 @@ class AppRoutes {
   static const String setupProfile = '/setup-profile';
   static const String artCategory = '/art-category';
   static const String nftDetail = '/nft-detail';
+  static const String profile = '/profile';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -35,6 +37,8 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => NftDetailScreen(nft: nft), // Passa o argumento
         );
+      case profile:
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
