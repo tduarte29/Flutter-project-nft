@@ -4,6 +4,7 @@ import '../screens/search_screen.dart';
 import '../screens/setup_profile_screen.dart';
 import '../screens/art_category_screen.dart';
 import '../screens/nft_detail_screen.dart';
+import '../models/model.dart';
 
 class AppRoutes {
   static const String onboarding = '/';
@@ -30,7 +31,10 @@ class AppRoutes {
           ),
         );
       case nftDetail:
-        return MaterialPageRoute(builder: (_) => NftDetailScreen());
+        final nft = settings.arguments as NftModel; // Recebe o argumento
+        return MaterialPageRoute(
+          builder: (_) => NftDetailScreen(nft: nft), // Passa o argumento
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
