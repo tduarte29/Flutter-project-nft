@@ -30,43 +30,46 @@ class FeaturedCollections extends StatelessWidget {
         ],
         Container(
           constraints: const BoxConstraints(maxWidth: 500),
-          child: GridView.count(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            childAspectRatio: 0.85,
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            children: <Widget>[
-              _buildCollectionCard(
-                context: context,
-                image: 'assets/images/dourdarce_collection.png',
-                name: 'DourDarceIs',
-                items: '10K',
-                owners: '4,93K',
-              ),
-              _buildCollectionCard(
-                context: context,
-                image: 'assets/images/cyberbrokers_collection.png',
-                name: 'CyberBrokersDeployer',
-                items: '10K',
-                owners: '4,93K',
-              ),
-              _buildCollectionCard(
-                context: context,
-                image: 'assets/images/boredapeyachtclub_collection.png',
-                name: 'BoredApeYachtClub',
-                items: 'Items',
-                owners: 'Owners',
-              ),
-              _buildCollectionCard(
-                context: context,
-                image: 'assets/images/azuki_collection.png',
-                name: 'Azuki',
-                items: 'Items',
-                owners: 'Owners',
-              ),
-            ],
+          child: SizedBox(
+            height: 400, // Defina uma altura fixa ou calcule dinamicamente
+            child: GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              childAspectRatio: 0.85,
+              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 10.0,
+              children: <Widget>[
+                _buildCollectionCard(
+                  context: context,
+                  image: 'assets/images/dourdarce_collection.png',
+                  name: 'DourDarceIs',
+                  items: '10K',
+                  owners: '4,93K',
+                ),
+                _buildCollectionCard(
+                  context: context,
+                  image: 'assets/images/cyberbrokers_collection.png',
+                  name: 'CyberBrokersDeployer',
+                  items: '10K',
+                  owners: '4,93K',
+                ),
+                _buildCollectionCard(
+                  context: context,
+                  image: 'assets/images/boredapeyachtclub_collection.png',
+                  name: 'BoredApeYachtClub',
+                  items: 'Items',
+                  owners: 'Owners',
+                ),
+                _buildCollectionCard(
+                  context: context,
+                  image: 'assets/images/azuki_collection.png',
+                  name: 'Azuki',
+                  items: 'Items',
+                  owners: 'Owners',
+                ),
+              ],
+            ),
           ),
         ),
       ],
