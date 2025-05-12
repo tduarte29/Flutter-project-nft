@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'screens/onboarding_screen.dart';
+import 'utils/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,9 +23,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xFF1D9BF0),
-        fontFamily: 'Gilroy',
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(fontFamily: 'Gilroy'),
+        ),
       ),
-      home: OnboardingScreen(),
+      onGenerateRoute: AppRoutes.generateRoute,
+      initialRoute: AppRoutes.onboarding,
     );
   }
 }

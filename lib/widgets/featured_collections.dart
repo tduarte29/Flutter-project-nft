@@ -151,22 +151,22 @@ class FeaturedCollections extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+                            Text(
+                              items,
+                              style: const TextStyle(
+                                fontFamily: 'Gilroy',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.0,
+                                color: Colors.white70,
+                              ),
+                            ),
                             const Text(
                               'Items',
                               style: TextStyle(
                                 fontFamily: 'Gilroy',
                                 fontWeight: FontWeight.w400,
-                                fontSize: 12.0,
-                                color: Color(0xFFAAB8C2),
-                              ),
-                            ),
-                            Text(
-                              items,
-                              style: const TextStyle(
-                                fontFamily: 'Gilroy',
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.0,
-                                color: Colors.white,
+                                fontSize: 10.0,
+                                color: Colors.white38,
                               ),
                             ),
                           ],
@@ -174,22 +174,22 @@ class FeaturedCollections extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
+                            Text(
+                              owners,
+                              style: const TextStyle(
+                                fontFamily: 'Gilroy',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.0,
+                                color: Colors.white70,
+                              ),
+                            ),
                             const Text(
                               'Owners',
                               style: TextStyle(
                                 fontFamily: 'Gilroy',
                                 fontWeight: FontWeight.w400,
-                                fontSize: 12.0,
-                                color: Color(0xFFAAB8C2),
-                              ),
-                            ),
-                            Text(
-                              owners,
-                              style: const TextStyle(
-                                fontFamily: 'Gilroy',
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.0,
-                                color: Colors.white,
+                                fontSize: 10.0,
+                                color: Colors.white38,
                               ),
                             ),
                           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/featured_collections.dart';
+import '../widgets/featured_collections.dart';
+import '../widgets/art_category/art_category_info.dart';
 
 class ArtCategoryScreen extends StatelessWidget {
   final String title;
@@ -22,7 +23,8 @@ class ArtCategoryScreen extends StatelessWidget {
           Container(
             height: 250.0,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20.0)),
+              borderRadius:
+                  const BorderRadius.vertical(bottom: Radius.circular(20.0)),
               image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
@@ -48,7 +50,8 @@ class ArtCategoryScreen extends StatelessWidget {
                           alignment: Alignment.bottomRight,
                           padding: const EdgeInsets.all(8.0),
                           iconSize: 21.0,
-                          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                          icon: const Icon(Icons.arrow_back_ios,
+                              color: Colors.white),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -58,24 +61,9 @@ class ArtCategoryScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 120.0),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 32.0,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 18.0),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14.0,
-                    color: Colors.white70,
-                  ),
+                ArtCategoryInfo(
+                  title: title,
+                  description: description,
                 ),
                 const SizedBox(height: 20.0),
                 const Expanded(
