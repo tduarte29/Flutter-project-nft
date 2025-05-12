@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/model.dart';
 
-class NftDetailScreen extends StatelessWidget {
-  final NftModel nft;
-
-  const NftDetailScreen({super.key, required this.nft});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +10,9 @@ class NftDetailScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF15202B),
         elevation: 0,
-        title: Text(
-          nft.name,
-          style: const TextStyle(
+        title: const Text(
+          'Profile',
+          style: TextStyle(
             fontFamily: 'Gilroy',
             fontWeight: FontWeight.w700,
             fontSize: 20.0,
@@ -29,38 +26,39 @@ class NftDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagem do NFT
-            Container(
-              width: double.infinity,
-              height: 250.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                  image: AssetImage(nft.imageUrl),
-                  fit: BoxFit.cover,
-                ),
+            // Imagem do perfil
+            Center(
+              child: CircleAvatar(
+                radius: 50.0,
+                backgroundImage: const AssetImage('assets/images/azuki_collection.png'),
+                backgroundColor: Colors.grey[800],
               ),
             ),
             const SizedBox(height: 16.0),
-            // Nome do NFT
-            Text(
-              nft.name,
-              style: const TextStyle(
-                fontFamily: 'Gilroy',
-                fontWeight: FontWeight.w700,
-                fontSize: 24.0,
-                color: Colors.white,
+            // Nome do usuário
+            Center(
+              child: Text(
+                'Karafuru',
+                style: const TextStyle(
+                  fontFamily: 'Gilroy',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24.0,
+                  color: Colors.white,
+                ),
               ),
             ),
             const SizedBox(height: 8.0),
-            // Descrição do NFT
-            Text(
-              nft.description,
-              style: const TextStyle(
-                fontFamily: 'Gilroy',
-                fontWeight: FontWeight.w400,
-                fontSize: 14.0,
-                color: Colors.white70,
+            // Descrição do perfil
+            Center(
+              child: Text(
+                'Karafuru is home to 5,555 generative arts where colors reign supreme. Leave the drab reality and enter the world of Karafuru by Museum of Toys.',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontFamily: 'Gilroy',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.0,
+                  color: Colors.white70,
+                ),
               ),
             ),
             const SizedBox(height: 24.0),
@@ -68,8 +66,8 @@ class NftDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildStatCard('Items', nft.items),
-                _buildStatCard('Owners', nft.owners),
+                _buildStatCard('Items', '5,6K'),
+                _buildStatCard('Owners', '3,7K'),
                 _buildStatCard('Floor Price', '2.4 ETH'),
                 _buildStatCard('Volume Trade', '36,3K ETH'),
               ],
