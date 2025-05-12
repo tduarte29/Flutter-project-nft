@@ -3,7 +3,6 @@ import 'onboarding_screen.dart';
 import 'setup_profile_screen.dart';
 import 'art_category_screen.dart';
 import '../components/featured_collections.dart';
-import '../utils/routes.dart';
 
 class SearchScreen extends StatelessWidget {
   final int selectedIndex;
@@ -121,14 +120,26 @@ class SearchScreen extends StatelessWidget {
           description = 'Discover rare digital collectibles and expand your NFT collection with unique items.';
         }
 
-        Navigator.pushNamed(
+        Navigator.push(
           context,
-          AppRoutes.artCategory,
-          arguments: {
-            'title': title,
-            'image': image,
-            'description': description,
-          },
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) => ArtCategoryScreen(
+              title: title,
+              image: image,
+              description: description,
+            ),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              const begin = Offset(1.0, 0.0);
+              const end = Offset.zero;
+              const curve = Curves.ease;
+              var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            },
+            transitionDuration: const Duration(milliseconds: 400),
+          ),
         );
       },
       child: Container(

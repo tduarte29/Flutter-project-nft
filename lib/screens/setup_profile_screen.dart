@@ -19,12 +19,15 @@ class SetupProfileScreen extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
-                pageBuilder: (context, animation, secondaryAnimation) => const SearchScreen(selectedIndex: 1),
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const SearchScreen(selectedIndex: 1),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   const begin = Offset(1.0, 0.0);
                   const end = Offset.zero;
                   const curve = Curves.ease;
-                  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                  var tween = Tween(begin: begin, end: end)
+                      .chain(CurveTween(curve: curve));
                   return SlideTransition(
                     position: animation.drive(tween),
                     child: child,
@@ -75,7 +78,8 @@ class SetupProfileScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                            image: AssetImage('assets/images/default_profile.png'), // Substitua pelo seu asset
+                            image: AssetImage(
+                                'assets/images/default_profile.png'), // Substitua pelo seu asset
                             fit: BoxFit.cover,
                           ),
                           border: Border.all(
@@ -107,7 +111,8 @@ class SetupProfileScreen extends StatelessWidget {
                         // Adicionar lógica de upload
                       },
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Color(0xFF252B41), width: 1.0),
+                        side: const BorderSide(
+                            color: Color(0xFF252B41), width: 1.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/model.dart';
-import '../utils/routes.dart';
+import '../screens/nft_detail_screen.dart';
 
 class FeaturedCollections extends StatelessWidget {
   const FeaturedCollections({
@@ -14,41 +13,6 @@ class FeaturedCollections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<NftModel> nfts = [
-      NftModel(
-        id: '1',
-        name: 'DourDarceIs',
-        imageUrl: 'assets/images/dourdarce_collection.png',
-        description: 'A unique NFT from the DourDarce collection.',
-        items: '10K',
-        owners: '4,93K',
-      ),
-      NftModel(
-        id: '2',
-        name: 'CyberBrokersDeployer',
-        imageUrl: 'assets/images/cyberbrokers_collection.png',
-        description: 'A unique NFT from the CyberBrokers collection.',
-        items: '10K',
-        owners: '4,93K',
-      ),
-      NftModel(
-        id: '3',
-        name: 'BoredApeYachtClub',
-        imageUrl: 'assets/images/boredapeyachtclub_collection.png',
-        description: 'A unique NFT from the Bored Ape Yacht Club.',
-        items: 'Items',
-        owners: 'Owners',
-      ),
-      NftModel(
-        id: '4',
-        name: 'Azuki',
-        imageUrl: 'assets/images/azuki_collection.png',
-        description: 'A unique NFT from the Azuki collection.',
-        items: 'Items',
-        owners: 'Owners',
-      ),
-    ];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,17 +30,43 @@ class FeaturedCollections extends StatelessWidget {
         ],
         Container(
           constraints: const BoxConstraints(maxWidth: 500),
-          child: SizedBox(
-            height: 400,
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              childAspectRatio: 0.85,
-              crossAxisSpacing: 10.0,
-              mainAxisSpacing: 10.0,
-              children: nfts.map((nft) => _buildCollectionCard(context: context, nft: nft)).toList(),
-            ),
+          child: GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            childAspectRatio: 0.85,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 10.0,
+            children: <Widget>[
+              _buildCollectionCard(
+                context: context,
+                image: 'assets/images/dourdarce_collection.png',
+                name: 'DourDarceIs',
+                items: '10K',
+                owners: '4,93K',
+              ),
+              _buildCollectionCard(
+                context: context,
+                image: 'assets/images/cyberbrokers_collection.png',
+                name: 'CyberBrokersDeployer',
+                items: '10K',
+                owners: '4,93K',
+              ),
+              _buildCollectionCard(
+                context: context,
+                image: 'assets/images/boredapeyachtclub_collection.png',
+                name: 'BoredApeYachtClub',
+                items: 'Items',
+                owners: 'Owners',
+              ),
+              _buildCollectionCard(
+                context: context,
+                image: 'assets/images/azuki_collection.png',
+                name: 'Azuki',
+                items: 'Items',
+                owners: 'Owners',
+              ),
+            ],
           ),
         ),
       ],
@@ -85,14 +75,31 @@ class FeaturedCollections extends StatelessWidget {
 
   Widget _buildCollectionCard({
     required BuildContext context,
-    required NftModel nft,
+    required String image,
+    required String name,
+    required String items,
+    required String owners,
   }) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          AppRoutes.nftDetail,
-          arguments: nft,
+        Navigator.of(context).push(
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const NftDetailScreen(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              const begin = Offset(1.0, 0.0);
+              const end = Offset.zero;
+              const curve = Curves.ease;
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              return SlideTransition(
+                position: animation.drive(tween),
+                child: child,
+              );
+            },
+            transitionDuration: const Duration(milliseconds: 400),
+          ),
         );
       },
       child: SizedBox(
@@ -114,7 +121,7 @@ class FeaturedCollections extends StatelessWidget {
                       topRight: Radius.circular(10.0),
                     ),
                     image: DecorationImage(
-                      image: AssetImage(nft.imageUrl),
+                      image: AssetImage(image),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -127,7 +134,7 @@ class FeaturedCollections extends StatelessWidget {
                   children: <Widget>[
                     Center(
                       child: Text(
-                        nft.name,
+                        name,
                         style: const TextStyle(
                           fontFamily: 'Gilroy',
                           fontWeight: FontWeight.w500,
@@ -154,7 +161,7 @@ class FeaturedCollections extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              nft.items,
+                              items,
                               style: const TextStyle(
                                 fontFamily: 'Gilroy',
                                 fontWeight: FontWeight.w500,
@@ -177,7 +184,7 @@ class FeaturedCollections extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              nft.owners,
+                              owners,
                               style: const TextStyle(
                                 fontFamily: 'Gilroy',
                                 fontWeight: FontWeight.w500,
