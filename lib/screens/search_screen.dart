@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'onboarding_screen.dart';
 import 'setup_profile_screen.dart';
 import 'art_category_screen.dart';
+
 import '../widgets/featured_collections.dart';
 import '../widgets/search/search_bar.dart' as custom_search;
 import '../widgets/search/categories_list.dart';
@@ -124,6 +125,8 @@ class SearchScreen extends StatelessWidget {
                 transitionDuration: const Duration(milliseconds: 400),
               ),
             );
+          } else if (index == 2) {
+            Navigator.pushReplacementNamed(context, '/analytics');
           } else if (index == 3) {
             Navigator.pushReplacement(
               context,

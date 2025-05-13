@@ -39,6 +39,7 @@ class NftDetailHeader extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
+                  // ignore: deprecated_member_use
                   color: Colors.black.withOpacity(0.5),
                 ),
                 child: IconButton(
@@ -51,6 +52,7 @@ class NftDetailHeader extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.5),
                     ),
                     child: IconButton(
@@ -62,6 +64,7 @@ class NftDetailHeader extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.5),
                     ),
                     child: IconButton(
