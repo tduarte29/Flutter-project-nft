@@ -63,8 +63,7 @@ class SetupProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   ProfilePhotoUploader(
                     imagePath: 'assets/images/default_profile.png',
-                    onUpload: () {
-                      // Adicionar lógica de upload
+                    onUpload: () {                      
                     },
                   ),
                   SizedBox(
@@ -72,7 +71,6 @@ class SetupProfileScreen extends StatelessWidget {
                     height: 45.0,
                     child: OutlinedButton(
                       onPressed: () {
-                        // Adicionar lógica de upload
                       },
                       style: OutlinedButton.styleFrom(
                         side: const BorderSide(
@@ -169,7 +167,6 @@ class SetupProfileScreen extends StatelessWidget {
               ProfileSaveButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Salvar perfil ou navegar
                     Navigator.pushReplacement(
                       context,
                       PageRouteBuilder(
